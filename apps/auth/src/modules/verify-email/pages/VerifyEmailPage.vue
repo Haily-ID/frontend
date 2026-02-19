@@ -11,14 +11,6 @@
       </NText>
     </div>
 
-    <NAlert v-if="errorCode" type="error" :bordered="false" class="!mb-5">
-      {{ t(getErrorMessageKey(errorCode)) }}
-    </NAlert>
-
-    <NAlert v-if="resendSuccess" type="success" :bordered="false" class="!mb-5">
-      {{ t('verifyEmail.resendSuccess') }}
-    </NAlert>
-
     <NForm ref="formRef" :model="form" :rules="rules" @submit.prevent="handleSubmit">
       <NFormItem path="otp" :show-label="false" :feedback-style="{ textAlign: 'center' }">
         <div class="flex justify-center w-full">
@@ -72,7 +64,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, computed } from 'vue'
+  import { ref, computed, watch } from 'vue'
   import { useRoute, RouterLink } from 'vue-router'
   import { useI18n } from 'vue-i18n'
   import {
@@ -82,7 +74,7 @@
     NFormItem,
     NInputOtp,
     NButton,
-    NAlert,
+    useMessage,
     type FormInst,
     type FormRules,
   } from 'naive-ui'
@@ -91,6 +83,7 @@
 
   const { t } = useI18n()
   const route = useRoute()
+  const message = useMessage()
   const formRef = ref<FormInst | null>(null)
 
   const email = computed(() => route.query.email as string | undefined)
@@ -106,13 +99,22 @@
     resendOTP,
   } = useVerifyEmail()
 
+  watch(errorCode, (code) => {
+    if (code) message.error(t(getErrorMessageKey(code)))
+  })
+
+  watch(resendSuccess, (val) => {
+    if (val) message.success(t('verifyEmail.resendSuccess'))
+  })
+
   const rules = computed<FormRules>(() => ({
     otp: [
       {
-        validator: (_rule, value: string) => {
-          if (!value || value.length === 0)
+        validator: (_rule, value: string[]) => {
+          const joined = Array.isArray(value) ? value.join('') : value
+          if (!joined || joined.length === 0)
             return new Error(t('verifyEmail.validation.otpRequired'))
-          if (value.length < 6) return new Error(t('verifyEmail.validation.otpLength'))
+          if (joined.length < 6) return new Error(t('verifyEmail.validation.otpLength'))
           return true
         },
         trigger: ['change', 'submit'],

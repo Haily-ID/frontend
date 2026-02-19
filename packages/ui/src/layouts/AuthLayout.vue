@@ -1,6 +1,6 @@
 <template>
   <NConfigProvider :theme-overrides="themeOverrides" :locale="locale" :date-locale="dateLocale">
-    <NMessageProvider>
+    <NMessageProvider :duration="MESSAGE_DURATION">
       <NNotificationProvider>
         <div class="flex min-h-screen">
           <!-- ── Left: image panel ── -->
@@ -48,7 +48,7 @@
   import { NConfigProvider, NMessageProvider, NNotificationProvider } from 'naive-ui'
   import { enUS, dateEnUS } from 'naive-ui'
   import AppLogo from '../components/AppLogo.vue'
-  import { themeOverrides } from '../theme/index'
+  import { themeOverrides, MESSAGE_DURATION } from '../theme/index'
 
   const locale = enUS
   const dateLocale = dateEnUS

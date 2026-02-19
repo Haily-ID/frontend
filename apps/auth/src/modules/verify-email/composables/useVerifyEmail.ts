@@ -1,9 +1,10 @@
 import { ref, reactive, onMounted, onUnmounted } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
+import { useRoute } from 'vue-router'
+import { useAuthStore } from '@haily/auth'
 import { verifyEmailService } from '../services/verify-email.service'
 
 export function useVerifyEmail() {
-  const router = useRouter()
+  const authStore = useAuthStore()
   const route = useRoute()
 
   const token = ref((route.query.token as string) ?? '')
@@ -15,7 +16,7 @@ export function useVerifyEmail() {
   const resendCooldown = ref(0)
   const resendSuccess = ref(false)
 
-  const form = reactive({ otp: '' })
+  const form = reactive({ otp: [] as string[] })
 
   const COOLDOWN_KEY = 'haily_resend_cooldown_until'
   let countdownInterval: ReturnType<typeof setInterval> | null = null
@@ -61,11 +62,19 @@ export function useVerifyEmail() {
   })
 
   async function verify() {
+    if (!token.value) {
+      errorCode.value = 'INVALID_VERIFICATION_TOKEN'
+      return
+    }
     loading.value = true
     errorCode.value = null
     try {
-      await verifyEmailService.verify({ token: token.value, otp: form.otp })
-      router.push('/login')
+      const { token, user } = await verifyEmailService.verify({
+        token: token.value,
+        otp: form.otp.join(''),
+      })
+      authStore.setSession(token, user)
+      window.location.href = import.meta.env.VITE_DEFAULT_REDIRECT_URL ?? '/'
     } catch (err: any) {
       errorCode.value = err?.code ?? 'INTERNAL_SERVER_ERROR'
     } finally {

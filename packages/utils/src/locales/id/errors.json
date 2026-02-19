@@ -1,7 +1,7 @@
 {
     "error": {
         "unknown": "Terjadi kesalahan yang tidak terduga",
-        "validationError": "Harap periksa kolom formulir",
+        "validationError": "Terjadi kesalahan pada permintaan Anda. Silakan coba lagi.",
         "emailAlreadyExists": "Email ini sudah terdaftar",
         "invalidCredentials": "Email atau kata sandi tidak valid",
         "emailNotVerified": "Harap verifikasi email Anda terlebih dahulu",
