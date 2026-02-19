@@ -9,7 +9,7 @@
       </NText>
     </div>
 
-    <NAlert v-if="errorCode" type="error" :bordered="false" class="!mb-5">
+    <NAlert v-if="errorCode" type="error" class="!mb-5">
       {{ t(getErrorMessageKey(errorCode)) }}
     </NAlert>
 

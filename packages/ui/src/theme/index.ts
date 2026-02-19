@@ -16,6 +16,9 @@ const PRIMARY_HOVER = '#74b6ff'
 const PRIMARY_PRESSED = '#3a8fe8'
 const PRIMARY_SUPPL = '#dbeafe' // light fill / supplementary tint
 
+/** Default duration (ms) for all NMessage toasts across every app. */
+export const MESSAGE_DURATION = 4000
+
 export const themeOverrides: GlobalThemeOverrides = {
   common: {
     primaryColor: PRIMARY,

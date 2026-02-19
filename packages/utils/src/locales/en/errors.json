@@ -1,7 +1,7 @@
 {
     "error": {
         "unknown": "An unexpected error occurred",
-        "validationError": "Please check the form fields",
+        "validationError": "Something went wrong with your request. Please try again.",
         "emailAlreadyExists": "This email is already registered",
         "invalidCredentials": "Invalid email or password",
         "emailNotVerified": "Please verify your email first",

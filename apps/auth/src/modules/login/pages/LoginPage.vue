@@ -9,10 +9,6 @@
       </NText>
     </div>
 
-    <NAlert v-if="errorCode" type="error" :bordered="false" class="!mb-5">
-      {{ t(getErrorMessageKey(errorCode)) }}
-    </NAlert>
-
     <NForm ref="formRef" :model="form" :rules="rules" @submit.prevent="handleSubmit">
       <NFormItem path="email" :label="t('login.email')">
         <NInput
@@ -64,7 +60,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, computed } from 'vue'
+  import { ref, computed, watch } from 'vue'
   import { useRoute, RouterLink } from 'vue-router'
   import { useI18n } from 'vue-i18n'
   import {
@@ -75,7 +71,7 @@
     NFormItem,
     NInput,
     NButton,
-    NAlert,
+    useMessage,
     type FormInst,
     type FormRules,
   } from 'naive-ui'
@@ -84,9 +80,14 @@
 
   const { t } = useI18n()
   const route = useRoute()
+  const message = useMessage()
 
   const formRef = ref<FormInst | null>(null)
   const { form, loading, errorCode, login } = useLogin()
+
+  watch(errorCode, (code) => {
+    if (code) message.error(t(getErrorMessageKey(code)))
+  })
 
   const rules = computed<FormRules>(() => ({
     email: [{ required: true, message: t('login.validation.emailRequired'), trigger: 'blur' }],
