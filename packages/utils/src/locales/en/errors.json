@@ -1,0 +1,19 @@
+{
+    "error": {
+        "unknown": "An unexpected error occurred",
+        "validationError": "Please check the form fields",
+        "emailAlreadyExists": "This email is already registered",
+        "invalidCredentials": "Invalid email or password",
+        "emailNotVerified": "Please verify your email first",
+        "accountSuspended": "Your account has been suspended",
+        "invalidVerificationToken": "Invalid or expired verification link",
+        "verificationTokenUsed": "This verification link has already been used",
+        "verificationTokenExpired": "Verification link has expired",
+        "maxOtpAttemptsExceeded": "Too many failed attempts. Please request a new code",
+        "invalidOtp": "Invalid verification code",
+        "userNotFound": "Account not found",
+        "emailAlreadyVerified": "Email is already verified",
+        "unauthorized": "Session expired. Please sign in again",
+        "internalServerError": "Something went wrong. Please try again"
+    }
+}

@@ -1,0 +1,29 @@
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import { resolve } from 'path'
+import tailwindcss from 'tailwindcss'
+import autoprefixer from 'autoprefixer'
+import tailwindConfig from './tailwind.config'
+
+export default defineConfig({
+  plugins: [vue()],
+  css: {
+    postcss: {
+      plugins: [tailwindcss(tailwindConfig), autoprefixer()],
+    },
+  },
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src'),
+    },
+  },
+  server: {
+    port: 5172,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+      },
+    },
+  },
+})

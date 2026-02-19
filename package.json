@@ -1,0 +1,36 @@
+{
+    "name": "haily-frontend",
+    "private": true,
+    "version": "0.0.0",
+    "scripts": {
+        "dev:auth": "pnpm --filter auth dev",
+        "dev:finance": "pnpm --filter finance dev",
+        "dev:erp": "pnpm --filter erp dev",
+        "dev:hr": "pnpm --filter hr dev",
+        "dev:inventory": "pnpm --filter inventory dev",
+        "dev:all": "pnpm --parallel --filter './apps/*' dev",
+        "build:auth": "pnpm --filter auth build",
+        "build:all": "pnpm --filter './apps/*' build",
+        "lint": "pnpm --recursive lint",
+        "format": "prettier --write .",
+        "type-check": "pnpm --recursive type-check"
+    },
+    "pnpm": {
+        "onlyBuiltDependencies": [
+            "esbuild",
+            "vue-demi"
+        ]
+    },
+    "devDependencies": {
+        "@types/node": "^22.0.0",
+        "@typescript-eslint/eslint-plugin": "^8.0.0",
+        "@typescript-eslint/parser": "^8.0.0",
+        "@vitejs/plugin-vue": "^5.0.0",
+        "eslint": "^9.0.0",
+        "eslint-plugin-vue": "^9.0.0",
+        "prettier": "^3.0.0",
+        "typescript": "^5.5.0",
+        "vite": "^5.0.0",
+        "vue-tsc": "^2.0.0"
+    }
+}

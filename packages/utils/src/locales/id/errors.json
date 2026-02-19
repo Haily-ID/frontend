@@ -1,0 +1,19 @@
+{
+    "error": {
+        "unknown": "Terjadi kesalahan yang tidak terduga",
+        "validationError": "Harap periksa kolom formulir",
+        "emailAlreadyExists": "Email ini sudah terdaftar",
+        "invalidCredentials": "Email atau kata sandi tidak valid",
+        "emailNotVerified": "Harap verifikasi email Anda terlebih dahulu",
+        "accountSuspended": "Akun Anda telah ditangguhkan",
+        "invalidVerificationToken": "Tautan verifikasi tidak valid atau kadaluarsa",
+        "verificationTokenUsed": "Tautan verifikasi ini sudah digunakan",
+        "verificationTokenExpired": "Tautan verifikasi telah kadaluarsa",
+        "maxOtpAttemptsExceeded": "Terlalu banyak percobaan gagal. Minta kode baru",
+        "invalidOtp": "Kode verifikasi tidak valid",
+        "userNotFound": "Akun tidak ditemukan",
+        "emailAlreadyVerified": "Email sudah diverifikasi",
+        "unauthorized": "Sesi berakhir. Silakan masuk kembali",
+        "internalServerError": "Terjadi kesalahan. Silakan coba lagi"
+    }
+}
