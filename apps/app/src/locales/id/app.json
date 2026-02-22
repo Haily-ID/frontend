@@ -1,0 +1,26 @@
+{
+    "dashboard": {
+        "title": "Dasbor",
+        "subtitle": "Semua aplikasi Haily dalam satu tempat",
+        "greeting": "Selamat datang, {name}",
+        "subtitle": "Apa yang ingin Anda kerjakan hari ini?",
+        "apps": {
+            "finance": {
+                "name": "Keuangan",
+                "description": "Kelola faktur, anggaran, dan laporan keuangan."
+            },
+            "erp": {
+                "name": "ERP",
+                "description": "Perencanaan sumber daya perusahaan di seluruh organisasi."
+            },
+            "hr": {
+                "name": "SDM",
+                "description": "Kelola karyawan, kehadiran, dan penggajian."
+            },
+            "inventory": {
+                "name": "Inventaris",
+                "description": "Pantau stok, gudang, dan pesanan pembelian."
+            }
+        }
+    }
+}

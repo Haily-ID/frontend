@@ -4,13 +4,14 @@
 
 **Haily Frontend** is an enterprise frontend application consisting of multiple independent apps, each deployed on its own subdomain:
 
-| App         | Subdomain            | Description                        |
-| ----------- | -------------------- | ---------------------------------- |
-| `auth`      | `auth.haily.id`      | Central SSO (login, register, OTP) |
-| `finance`   | `finance.haily.id`   | Finance Management                 |
-| `erp`       | `erp.haily.id`       | ERP (Enterprise Resource Planning) |
-| `hr`        | `hr.haily.id`        | HR Management                      |
-| `inventory` | `inventory.haily.id` | Inventory Management               |
+| App         | Subdomain            | Description                             |
+| ----------- | -------------------- | --------------------------------------- |
+| `app`       | `app.haily.id`       | Central hub (all apps, like office.com) |
+| `auth`      | `auth.haily.id`      | Central SSO (login, register, OTP)      |
+| `finance`   | `finance.haily.id`   | Finance Management                      |
+| `erp`       | `erp.haily.id`       | ERP (Enterprise Resource Planning)      |
+| `hr`        | `hr.haily.id`        | HR Management                           |
+| `inventory` | `inventory.haily.id` | Inventory Management                    |
 
 Built as a **pnpm multi-app monorepo** — each app is an independent Vite application that shares common packages (`ui`, `auth`, `api`, `types`, `utils`) via pnpm workspaces.
 
@@ -1055,6 +1056,7 @@ pnpm format
 
 | App       | Port |
 | --------- | ---- |
+| app       | 5171 |
 | auth      | 5172 |
 | finance   | 5173 |
 | erp       | 5174 |
@@ -1175,8 +1177,10 @@ chore(deps): upgrade naive-ui to v2.x
 - ❌ No plain `fetch()`, always use Axios service
 - ❌ No hardcoded display strings — every label, placeholder, tooltip, and message goes through i18n
 - ❌ No pure CSS — no custom `<style>` classes, no raw `style=""` attributes
-- ❌ No inline styles — use Naive UI component props/theming or Tailwind utilities instead
+- ❌ **No inline styles whatsoever** — not on Naive UI components, not on HTML elements. Never pass `:style="{...}"` or `style="..."` to override a component's appearance. Let Naive UI render with its own defaults.
+- ❌ **Do not customise Naive UI internals** — do not use `:content-style`, `:header-style`, or any slot/prop that overrides Naive UI's own spacing, size, border-radius, colour, or typography. Use the component as-is.
 - ❌ No `any` type
+- ❌ No emoji icons, custom SVG helpers, or any other icon library — always use `@iconify/vue` with Iconify Fluent icons
 
 ### Tailwind vs Naive UI Decision Guide
 
@@ -1195,6 +1199,64 @@ chore(deps): upgrade naive-ui to v2.x
 | Custom animation / transition    | Tailwind (`transition-all duration-300`)                   |
 | Spacing around NUI components    | Tailwind (`mt-2`, `mb-5`, `px-4`, etc.)                    |
 | Primary colour on plain HTML/SVG | Tailwind (`text-primary-500`, `bg-primary-500`)            |
+| Icons                            | `NIcon` + `Icon` from `@iconify/vue` (`fluent:*` set)      |
+
+### Icons
+
+All icons use **`@iconify/vue`** with the **Iconify Fluent** icon set (`fluent:*`).
+
+**Never use:**
+
+- Emoji as icons
+- Custom SVG helper functions
+- Any other icon library (heroicons, lucide, etc.)
+
+**Always use:**
+
+```vue
+<script setup lang="ts">
+  import { Icon } from '@iconify/vue'
+  import { NIcon } from 'naive-ui'
+  import { h } from 'vue'
+</script>
+
+<template>
+  <!-- Standalone icon -->
+  <Icon icon="fluent:home-24-regular" />
+
+  <!-- Inside NIcon (for size/color/depth control via Naive UI) -->
+  <NIcon size="20" :component="() => h(Icon, { icon: 'fluent:home-24-regular' })" />
+</template>
+```
+
+**Icon naming convention:** `fluent:{name}-{size}-{style}`
+
+- Size: `16`, `20`, `24`, `28`, `32`, `48`
+- Style: `regular` (default) or `filled`
+
+**Common icons:**
+
+| Usage         | Icon string                       |
+| ------------- | --------------------------------- |
+| Home / Hub    | `fluent:home-24-regular`          |
+| Sign out      | `fluent:arrow-exit-20-regular`    |
+| Finance       | `fluent:money-24-regular`         |
+| ERP           | `fluent:building-24-regular`      |
+| HR / People   | `fluent:people-24-regular`        |
+| Inventory     | `fluent:box-24-regular`           |
+| Settings      | `fluent:settings-24-regular`      |
+| User / Avatar | `fluent:person-24-regular`        |
+| Add / Create  | `fluent:add-24-regular`           |
+| Delete        | `fluent:delete-24-regular`        |
+| Edit          | `fluent:edit-24-regular`          |
+| Search        | `fluent:search-24-regular`        |
+| Language      | `fluent:globe-24-regular`         |
+| Dark mode     | `fluent:weather-moon-24-regular`  |
+| Light mode    | `fluent:weather-sunny-24-regular` |
+
+Search the full set at [Iconify Fluent](https://icon-sets.iconify.design/fluent/).
+
+---
 
 ### Naive UI Theming
 

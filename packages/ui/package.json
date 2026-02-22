@@ -11,6 +11,7 @@
         "./components/*": "./src/components/*"
     },
     "dependencies": {
+        "@haily/auth": "workspace:*",
         "@iconify-icons/fluent": "^1.2.38",
         "@iconify/vue": "^5.0.0",
         "naive-ui": "^2.40.0",

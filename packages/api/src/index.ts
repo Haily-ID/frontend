@@ -26,7 +26,9 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (res) => res.data.data,
   (err) => {
-    if (err.response?.status === 401 && _onUnauthorized) {
+    const url: string = err.config?.url ?? ''
+    const isAuthEndpoint = /\/auth\/(login|register|verify-email|resend-otp|forgot-password|reset-password)/.test(url)
+    if (err.response?.status === 401 && _onUnauthorized && !isAuthEndpoint) {
       _onUnauthorized()
       return new Promise(() => {})
     }

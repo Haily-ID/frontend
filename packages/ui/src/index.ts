@@ -1,3 +1,6 @@
 export { default as AuthLayout } from './layouts/AuthLayout.vue'
-export { default as AppLogo } from './components/AppLogo.vue'
+export { default as AppLayout } from './layouts/AppLayout.vue'
+export { default as HailyLogo } from './components/HailyLogo.vue'
 export { themeOverrides, MESSAGE_DURATION } from './theme/index'
+export { default as appIcon } from './assets/icon.png'
+export { usePreferences } from './composables/usePreferences'
