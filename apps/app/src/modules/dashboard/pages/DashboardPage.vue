@@ -10,9 +10,7 @@
             @click="openApp(hailyApp.url)"
           >
             <NSpace vertical>
-              <NIcon size="28">
-                <Icon :icon="hailyApp.icon" />
-              </NIcon>
+              <Icon :icon="hailyApp.icon" width="32" height="32" />
               <NText strong>{{ t(`dashboard.apps.${hailyApp.key}.name`) }}</NText>
               <NText depth="3">{{ t(`dashboard.apps.${hailyApp.key}.description`) }}</NText>
             </NSpace>
@@ -26,7 +24,7 @@
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n'
   import { Icon } from '@iconify/vue'
-  import { NLayout, NLayoutContent, NText, NCard, NSpace, NIcon } from 'naive-ui'
+  import { NLayout, NLayoutContent, NText, NCard, NSpace } from 'naive-ui'
   import { useDashboard } from '../composables/useDashboard'
 
   const { t } = useI18n()

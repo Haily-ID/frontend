@@ -56,6 +56,9 @@ importers:
       '@haily/utils':
         specifier: workspace:*
         version: link:../../packages/utils
+      '@iconify-json/fluent-color':
+        specifier: ^1.2.21
+        version: 1.2.21
       '@iconify/vue':
         specifier: ^4.0.0
         version: 4.3.0(vue@3.5.28(typescript@5.9.3))
@@ -429,6 +432,9 @@ packages:
 
   '@iconify-icons/fluent@1.2.38':
     resolution: {integrity: sha512-5GaGNLxFZfzc82+vyH+SYdDgNJgni99qUFsvc0B7TLxrpXO4jlqhiGDBFQRVm4V2zNvyEsXdpjTa9qNSda2iKQ==}
+
+  '@iconify-json/fluent-color@1.2.21':
+    resolution: {integrity: sha512-VETjGx7BMpVsCR3HV5g5t6oBGZ92XKzIRClS5xUvDn1YHAkQTF9OyF/aFdtxYOC8JROoI1SNO/Ql6jZeK7mroA==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -1818,6 +1824,10 @@ snapshots:
   '@humanwhocodes/retry@0.4.3': {}
 
   '@iconify-icons/fluent@1.2.38':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/fluent-color@1.2.21':
     dependencies:
       '@iconify/types': 2.0.0
 
