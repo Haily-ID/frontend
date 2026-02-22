@@ -3,7 +3,6 @@
         "title": "Dasbor",
         "subtitle": "Semua aplikasi Haily dalam satu tempat",
         "greeting": "Selamat datang, {name}",
-        "subtitle": "Apa yang ingin Anda kerjakan hari ini?",
         "apps": {
             "finance": {
                 "name": "Keuangan",
@@ -22,5 +21,11 @@
                 "description": "Pantau stok, gudang, dan pesanan pembelian."
             }
         }
+    },
+    "noCompany": {
+        "title": "Belum Terdaftar di Perusahaan",
+        "message": "Anda belum terdaftar di perusahaan manapun. Lanjutkan membuat perusahaan atau minta staff admin perusahaan Anda untuk mengundang Anda.",
+        "createCompany": "Buat Perusahaan",
+        "logout": "Keluar"
     }
 }

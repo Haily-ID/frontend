@@ -50,6 +50,27 @@ export interface RegisterResponse {
   message: string
 }
 
+// ─── Company ───────────────────────────────────────────────────────────────────
+
+export type CompanyMemberRole = 'OWNER' | 'ADMIN' | 'STAFF'
+export type CompanyMemberStatus = 'ACTIVE' | 'INVITED' | 'SUSPENDED'
+
+export interface CompanyDTO {
+  id: string
+  name: string
+  slug: string
+  logo_key: string | null
+  created_at: number
+  updated_at: number
+}
+
+export interface CompanyMemberDTO {
+  company: CompanyDTO
+  role: CompanyMemberRole
+  status: CompanyMemberStatus
+  joined_at: number | null
+}
+
 // ─── API Wrapper ──────────────────────────────────────────────────────────────
 
 export interface ApiSuccess<T> {

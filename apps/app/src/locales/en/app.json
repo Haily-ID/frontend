@@ -3,7 +3,6 @@
         "title": "Dashboard",
         "subtitle": "All your Haily apps in one place",
         "greeting": "Good day, {name}",
-        "subtitle": "What would you like to work on today?",
         "apps": {
             "finance": {
                 "name": "Finance",
@@ -22,5 +21,11 @@
                 "description": "Track stock, warehouses, and purchase orders."
             }
         }
+    },
+    "noCompany": {
+        "title": "Not Registered in Any Company",
+        "message": "You are not registered in any company. Continue to create a company, or ask your company's admin to invite you.",
+        "createCompany": "Create Company",
+        "logout": "Sign Out"
     }
 }
