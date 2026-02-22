@@ -9,7 +9,7 @@ export function useDashboard() {
   const apps: HailyApp[] = [
     {
       key: 'finance',
-      icon: 'fluent-color:money-24',
+      icon: 'fluent-color:coin-multiple-24',
       url: import.meta.env.VITE_FINANCE_APP_URL ?? '#',
     },
     {
@@ -24,7 +24,7 @@ export function useDashboard() {
     },
     {
       key: 'inventory',
-      icon: 'fluent-color:box-24',
+      icon: 'fluent-color:building-store-24',
       url: import.meta.env.VITE_INVENTORY_APP_URL ?? '#',
     },
   ]
