@@ -1,0 +1,26 @@
+{
+    "dashboard": {
+        "title": "Dashboard",
+        "subtitle": "All your Haily apps in one place",
+        "greeting": "Good day, {name}",
+        "subtitle": "What would you like to work on today?",
+        "apps": {
+            "finance": {
+                "name": "Finance",
+                "description": "Manage invoices, budgets, and financial reports."
+            },
+            "erp": {
+                "name": "ERP",
+                "description": "Enterprise resource planning across your organization."
+            },
+            "hr": {
+                "name": "HR",
+                "description": "Manage employees, attendance, and payroll."
+            },
+            "inventory": {
+                "name": "Inventory",
+                "description": "Track stock, warehouses, and purchase orders."
+            }
+        }
+    }
+}

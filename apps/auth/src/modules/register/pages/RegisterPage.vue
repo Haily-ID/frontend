@@ -9,10 +9,6 @@
       </NText>
     </div>
 
-    <NAlert v-if="errorCode" type="error" class="!mb-5">
-      {{ t(getErrorMessageKey(errorCode)) }}
-    </NAlert>
-
     <NForm ref="formRef" :model="form" :rules="rules" @submit.prevent="handleSubmit">
       <NFormItem path="name" :label="t('register.name')">
         <NInput
@@ -73,7 +69,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, computed } from 'vue'
+  import { ref, computed, watch } from 'vue'
   import { RouterLink } from 'vue-router'
   import { useI18n } from 'vue-i18n'
   import {
@@ -84,7 +80,7 @@
     NFormItem,
     NInput,
     NButton,
-    NAlert,
+    useMessage,
     type FormInst,
     type FormRules,
   } from 'naive-ui'
@@ -92,8 +88,13 @@
   import { useRegister } from '../composables/useRegister'
 
   const { t } = useI18n()
+  const message = useMessage()
   const formRef = ref<FormInst | null>(null)
   const { form, loading, errorCode, register } = useRegister()
+
+  watch(errorCode, (code) => {
+    if (code) message.error(t(getErrorMessageKey(code)))
+  })
 
   const rules = computed<FormRules>(() => ({
     name: [

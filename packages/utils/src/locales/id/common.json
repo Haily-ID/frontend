@@ -10,5 +10,22 @@
     "back": "Kembali",
     "next": "Lanjut",
     "submit": "Kirim",
-    "close": "Tutup"
+    "close": "Tutup",
+    "layout": {
+        "nav": {
+            "home": "Beranda"
+        },
+        "user": {
+            "signOut": "Keluar"
+        },
+        "lang": {
+            "label": "Bahasa",
+            "en": "English",
+            "id": "Indonesia"
+        },
+        "theme": {
+            "dark": "Mode gelap",
+            "light": "Mode terang"
+        }
+    }
 }

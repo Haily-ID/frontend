@@ -10,5 +10,22 @@
     "back": "Back",
     "next": "Next",
     "submit": "Submit",
-    "close": "Close"
+    "close": "Close",
+    "layout": {
+        "nav": {
+            "home": "Home"
+        },
+        "user": {
+            "signOut": "Sign out"
+        },
+        "lang": {
+            "label": "Language",
+            "en": "English",
+            "id": "Indonesia"
+        },
+        "theme": {
+            "dark": "Dark mode",
+            "light": "Light mode"
+        }
+    }
 }
